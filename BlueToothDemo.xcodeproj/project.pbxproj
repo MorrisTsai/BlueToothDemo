@@ -15,6 +15,7 @@
 		A509645A1C64C13D00AAA207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50964581C64C13D00AAA207 /* LaunchScreen.storyboard */; };
 		A50964651C64C13D00AAA207 /* BlueToothDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A50964641C64C13D00AAA207 /* BlueToothDemoTests.m */; };
 		A50964701C64C13D00AAA207 /* BlueToothDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A509646F1C64C13D00AAA207 /* BlueToothDemoUITests.m */; };
+		A509647E1C64C65000AAA207 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A509647D1C64C65000AAA207 /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A509646B1C64C13D00AAA207 /* BlueToothDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueToothDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A509646F1C64C13D00AAA207 /* BlueToothDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueToothDemoUITests.m; sourceTree = "<group>"; };
 		A50964711C64C13D00AAA207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A509647D1C64C65000AAA207 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A509647E1C64C65000AAA207 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 		A509643E1C64C13C00AAA207 = {
 			isa = PBXGroup;
 			children = (
+				A509647D1C64C65000AAA207 /* CoreBluetooth.framework */,
 				A50964491C64C13D00AAA207 /* BlueToothDemo */,
 				A50964631C64C13D00AAA207 /* BlueToothDemoTests */,
 				A509646E1C64C13D00AAA207 /* BlueToothDemoUITests */,
@@ -413,10 +417,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xin Zhao (A97Z2B3V6R)";
 				INFOPLIST_FILE = BlueToothDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DDMaker.BlueToothDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -424,10 +431,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xin Zhao (A97Z2B3V6R)";
 				INFOPLIST_FILE = BlueToothDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DDMaker.BlueToothDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -498,6 +508,7 @@
 				A50964761C64C13D00AAA207 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A50964771C64C13D00AAA207 /* Build configuration list for PBXNativeTarget "BlueToothDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +517,7 @@
 				A50964791C64C13D00AAA207 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A509647A1C64C13D00AAA207 /* Build configuration list for PBXNativeTarget "BlueToothDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +526,7 @@
 				A509647C1C64C13D00AAA207 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
