@@ -62,6 +62,8 @@
 //                                            value:message permissions:CBAttributePermissionsWriteable];
 //    
 //    [peripheral writeValue:thisData forCharacteristic:myCharacteristic type:CBCharacteristicWriteWithoutResponse];
+    if(name)
+    {
     if([name isEqualToString:@"Seraphim-01"])
     {
        
@@ -71,7 +73,7 @@
        // [self.connectingPeripheral discoverServices:@[@"FFE0"]];
     }
    
-    
+    }
     
 }
 -(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral

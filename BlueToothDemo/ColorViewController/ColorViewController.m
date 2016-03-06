@@ -69,8 +69,14 @@
 {
     lightValue = sender.value;
     [self writeDataWithcolorIndex:1 andValue:redValue*lightValue];
-    [self writeDataWithcolorIndex:2 andValue:greenValue*lightValue];
-    [self writeDataWithcolorIndex:3 andValue:blueValue*lightValue];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(([lightEnableSet.allObjects count]+ 1)*0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self writeDataWithcolorIndex:2 andValue:greenValue*lightValue];
+
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(([lightEnableSet.allObjects count]+ 1)*0.02*2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self writeDataWithcolorIndex:3 andValue:blueValue*lightValue];
+    });
+    
 
 }
 - (IBAction)switchChanged:(UISwitch *)sender {
@@ -87,21 +93,26 @@
 -(void)writeDataWithcolorIndex:(int)colorIndex andValue:(int)value;
 {
     
-    for(UISwitch* thisSwitch in lightEnableSet.allObjects)
+    for(int i = 0 ; i < [lightEnableSet.allObjects count];i++)
     {
-        int li = thisSwitch.tag;
-        NSString* lightNum = [NSString stringWithFormat:@"%02x",li];
-        int colorValue = value*lightValue;
-        NSString* valueString = [NSString stringWithFormat:@"%02x",colorValue];
-        
-        NSString* message = @"~D011ff!";
-        NSData* thisData = [message dataUsingEncoding:nil];
-        NSMutableArray* enableLight = [NSMutableArray array];
-        
-        NSString* dataString = [NSString stringWithFormat:@"~D%@%d%@!",lightNum,colorIndex,valueString] ;
-        // NSString* message = @"~D011ff!";
-        
-        [[PeripheralHelper shared].currentPeripheral writeValue:[dataString dataUsingEncoding:nil] forCharacteristic:[PeripheralHelper shared].currentCharacteric type:CBCharacteristicWriteWithoutResponse];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i*0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UISwitch* thisSwitch = [lightEnableSet.allObjects objectAtIndex:i];
+            int li = thisSwitch.tag;
+            NSString* lightNum = [NSString stringWithFormat:@"%02x",li];
+            int colorValue = value*lightValue;
+            NSString* valueString = [NSString stringWithFormat:@"%02x",colorValue];
+            
+            NSString* message = @"~D011ff!";
+            NSData* thisData = [message dataUsingEncoding:nil];
+            NSMutableArray* enableLight = [NSMutableArray array];
+            
+            NSString* dataString = [NSString stringWithFormat:@"~D%@%d%@!",lightNum,colorIndex,valueString] ;
+            // NSString* message = @"~D011ff!";
+            
+            [[PeripheralHelper shared].currentPeripheral writeValue:[dataString dataUsingEncoding:nil] forCharacteristic:[PeripheralHelper shared].currentCharacteric type:CBCharacteristicWriteWithoutResponse];
+            
+        });
+       
 
     }
   }

@@ -90,7 +90,10 @@
     //
     //    [peripheral writeValue:thisData forCharacteristic:myCharacteristic type:CBCharacteristicWriteWithoutResponse];
     NSDictionary* per = @{@"name":[advertisementData objectForKey:@"kCBAdvDataLocalName"],@"device":peripheral};
-    [devices addObject:per];
+    if(per)
+    {
+        [devices addObject:per];
+    }
 //    if([name isEqualToString:@"Seraphim-01"])
 //    {
 //        
